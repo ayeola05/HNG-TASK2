@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Post, Body, BadRequestException, HttpCode } from '@nestjs/common';
 import { AppService } from './app.service';
 import { OperationsDto } from './Operations.dto';
 
@@ -12,6 +12,7 @@ export class AppController {
   }
 
   @Post()
+  @HttpCode(200)
   numberOperations(@Body() operationsDto: OperationsDto): {} {
     try{
       if(operationsDto.operation_type === "addition"){
